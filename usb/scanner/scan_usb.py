@@ -21,7 +21,11 @@ popular = ['autoconf.inf', 'autorun.inf', 'setup.exe', 'server.exe', 'BOOT', 'SE
 file_types = ['.exe', '.py', '.bat', '.vbs', '.inf', '.cpp', '.iso', '.jar', '.xml', '.html', '.sh', 'txt']
 # busses = usb.busses()
 device_re = re.compile(b"Bus\s+(?P<bus>\d+)\s+Device\s+(?P<device>\d+).+ID\s(?P<id>\w+:\w+)\s(?P<tag>.+)$", re.I)
-df = subprocess.check_output("lsusb")
+try:
+    df = subprocess.check_output("lsusb")
+except Exception as e:
+    print(Fore.RED+'[-]'+Fore.RESET+' Error while scanning for USB devices: '+str(e))
+    sys.exit()
 devices = []
 for i in df.split(b'\n'):
     if i:

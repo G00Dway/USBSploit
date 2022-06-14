@@ -610,7 +610,7 @@ def main():
                 logs = ""
                 for i in usbf:
                     logs+=i+' '
-                log.write('> '+logs)
+                log.write('> '+logs+'\n')
         elif history == 'off':
             pass
         else:
@@ -618,7 +618,7 @@ def main():
                 logs = ""
                 for i in usbf:
                     logs+=i+' '
-                log.write('> '+logs)
+                log.write('> '+logs+'\n')
         try:
             usbf = input('\033[4musbf\033[0m > ').strip(" ").lower()
         except KeyboardInterrupt:
