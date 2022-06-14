@@ -299,7 +299,7 @@ def show_banner():
 
 
 def main():
-    global num, connected
+    global num, connected, history
     try:
         usbf = input('\033[4musbf\033[0m > ').strip(" ").lower()
     except KeyboardInterrupt:
@@ -381,6 +381,7 @@ def main():
                         if usbf[1] in get:
                             found += 1
                             print('    '+get)
+                    print('')
                     if found == 0:
                         print('')
                         print(Fore.BLUE+'[i]'+Fore.RESET+' No modules found for: '+usbf[1])
@@ -426,13 +427,15 @@ def main():
             old = os.listdir(update)
             if old == [] or old == () or old == ['\n'] or old == ('\n') or old == False:
                 print(Fore.YELLOW+'[+]'+Fore.RESET+' No old databases found, skipping...')
-            else:
+            elif "_" in old or "OLD" in old:
                 print(Fore.BLUE+'[i]'+Fore.RESET+' Removing all old databases...')
                 time.sleep(1) 
                 for pr in old:
                     print(Fore.BLUE+'[i]'+Fore.RESET+' Removing database: '+pr)
                     time.sleep(0.3)
                     os.system('rm -rf '+update+'/'+pr)
+            else:
+                print(Fore.YELLOW+'[+]'+Fore.RESET+' No old databases found, skipping...')
         elif usbf[0] == 'update':
             os.system('bash '+update_install)
         elif usbf[0] == 'scan':
@@ -572,9 +575,11 @@ def main():
                     elif usbf[1] == 'off':
                         with open(root+'/options/history.options', 'w') as f:
                             f.write('off')
+                        history = "off"
                     elif usbf[1] == 'on':
                         with open(root+'/options/history.options', 'w') as k:
                             k.write('on')
+                        history = "on"
                     else:
                         print(Fore.RED+'[-]'+Fore.RESET+' Invalid command: '+usbf[1])
                 except:
