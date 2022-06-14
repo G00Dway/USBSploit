@@ -244,9 +244,7 @@ USB Commands
     command                 description
     -------                 -----------
     connect <dev>           Connect specified USB device "/dev/" to USBSploit Framework (Optional)
-    scan                    Scan for connected USB devices
     sdshow                  Show all attached USB devices "/dev/" paths
-    usb <name/path_id>      Get information about connected USB device, for more info use "more" before <name/path_id> 
     format <mode> <dev>     Quick format the specified USB device, format modes: "NTFS, FAT32"
     delete <dev>            Delete everything in device
 
@@ -438,36 +436,36 @@ def main():
                 print(Fore.YELLOW+'[+]'+Fore.RESET+' No old databases found, skipping...')
         elif usbf[0] == 'update':
             os.system('bash '+update_install)
-        elif usbf[0] == 'scan':
-            print(Fore.MAGENTA+'[!] WARN:'+Fore.RESET+' The "/dev/sdb-sda" path of the usb devices will NOT be shown, so in modules use you need to specify the path manually!')
-            print(Fore.BLUE+'[i]'+Fore.RESET+' Scanning for connected USB devices...')
-            time.sleep(1)
-            os.system('python3 '+scan_usb)
-        elif usbf[0] == 'usb':
-            def more_info(more_system):
-                print(Fore.BLUE+'[i]'+Fore.RESET+' Device name: '+more_system)
-                dev = input(Fore.CYAN+'[?]'+Fore.RESET+' Please enter the "/dev/sdb-sda" path of the device: ')
-                time.sleep(1)
-                if dev == '' or dev == ' ':
-                    print(Fore.RED+'[-]'+Fore.RESET+' Please enter a valid USB device!')
-                elif '/dev' in dev:
-                    os.system('python3 '+scan_usb+f' {dev}')
-                else:
-                    print(Fore.RED+'[-]'+Fore.RESET+' Please enter device path with "/dev"')
-            def info(system):
-                os.system('python3 '+scan_usb+f' {system}')
-            if len(usbf) <= 3:
-                if len(usbf) == 2:
-                    info(usbf[1])
-                elif len(usbf) == 3:
-                    if usbf[1] == 'more':
-                        more_info(usbf[2])
-                    else:
-                        print(Fore.RED+'[-]'+Fore.RESET+' Unrecognized command: '+usbf[1])
-                else:
-                    print(Fore.RED+'[-]'+Fore.RESET+' Please enter USB name/path_id!')
-            else:
-                print(Fore.RED+'[-]'+Fore.RESET+' Please enter a valid command!')
+        # elif usbf[0] == 'scan':
+        #     print(Fore.MAGENTA+'[!] WARN:'+Fore.RESET+' The "/dev/sdb-sda" path of the usb devices will NOT be shown, so in modules use you need to specify the path manually!')
+        #     print(Fore.BLUE+'[i]'+Fore.RESET+' Scanning for connected USB devices...')
+        #     time.sleep(1)
+        #     os.system('python3 '+scan_usb)
+        # elif usbf[0] == 'usb':
+        #     def more_info(more_system):
+        #         print(Fore.BLUE+'[i]'+Fore.RESET+' Device name: '+more_system)
+        #         dev = input(Fore.CYAN+'[?]'+Fore.RESET+' Please enter the "/dev/sdb-sda" path of the device: ')
+        #         time.sleep(1)
+        #         if dev == '' or dev == ' ':
+        #             print(Fore.RED+'[-]'+Fore.RESET+' Please enter a valid USB device!')
+        #         elif '/dev' in dev:
+        #             os.system('python3 '+scan_usb+f' {dev}')
+        #         else:
+        #             print(Fore.RED+'[-]'+Fore.RESET+' Please enter device path with "/dev"')
+        #     def info(system):
+        #         os.system('python3 '+scan_usb+f' {system}')
+        #     if len(usbf) <= 3:
+        #         if len(usbf) == 2:
+        #             info(usbf[1])
+        #         elif len(usbf) == 3:
+        #             if usbf[1] == 'more':
+        #                 more_info(usbf[2])
+        #             else:
+        #                 print(Fore.RED+'[-]'+Fore.RESET+' Unrecognized command: '+usbf[1])
+        #         else:
+        #             print(Fore.RED+'[-]'+Fore.RESET+' Please enter USB name/path_id!')
+        #     else:
+        #         print(Fore.RED+'[-]'+Fore.RESET+' Please enter a valid command!')
         elif usbf[0] == 'sdshow':
             print(Fore.BLUE+'[i]'+Fore.RESET+' Listing all USB devices /dev/ paths...')
             time.sleep(0.4)
