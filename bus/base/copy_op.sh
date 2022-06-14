@@ -1,0 +1,1 @@
+cp -r -v /usr/share/usbsploit/core /usr/share/usbsploit/.backup &>> cp.log

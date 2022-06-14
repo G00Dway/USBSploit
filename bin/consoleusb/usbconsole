@@ -1,0 +1,5 @@
+echo "\033[1;77m[i] \033[0mLoading drivers..."
+echo "\033[1;77m[i] \033[0mLoading modules from: 'MODULES'..."
+sleep 1
+echo "\033[1;77m[i] \033[0mLoading usbsploit framework..."
+python3 /usr/share/usbsploit/core/base/usbconsole.py
