@@ -321,11 +321,17 @@ def main():
                 try:
                     if usbf[1] == '-f':
                         print(Fore.RED+'[-]'+Fore.RESET+' Force quitting...')
-                        sys.exit()
+                        try:
+                            sys.exit()
+                        except:
+                            exit()
                     else:
                         print(Fore.RED+'[-]'+Fore.RESET+' Unrecognized arg: '+usbf[1])
                         print(Fore.RED+'[-]'+Fore.RESET+' Quitting anyway...')
-                        exit()
+                        try:
+                            exit()
+                        except:
+                            sys.exit()
                 except:
                     pass
         elif usbf[0] == 'show':
