@@ -186,7 +186,6 @@ List Commands
     command                 description
     -------                 -----------
     list modules            Show/List all usable and available modules
-    list drivers            Show/List all available drivers
 '''
 show_cmd = '''
 Module Command(s):
@@ -283,14 +282,6 @@ Drivers Installed
     drvrs += '\n'+log+'\n'
 
 
-try:
-    if load_drivers == []:
-        pass
-    else:
-        add()
-except:
-    pass
-
 def show_banner():
     Banner.generate()
     print("+ -- ---={ "+Fore.YELLOW+"USBSploit Framework Version "+version+" "+Fore.RESET+"}")
@@ -350,12 +341,7 @@ def main():
                 print(list_cmd)
             else:
                 try:
-                    if usbf[1] == 'drivers':
-                        if drvrs == '''''':
-                            print(Fore.RED+'[-]'+Fore.RESET+' No drivers loaded! fatal!')
-                        else:
-                            print(drvrs)
-                    elif usbf[1] == 'modules':
+                    if usbf[1] == 'modules':
                         print('')
                         print("Available modules")
                         print('=================')
