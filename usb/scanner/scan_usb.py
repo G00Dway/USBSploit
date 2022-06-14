@@ -15,8 +15,8 @@ dev = ""
 if len(sys.argv) < 2:
     pass
 else:
-    info = sys.argv[1]
-    dev = sys.argv[1]
+    info = str(sys.argv[1])
+    dev = str(sys.argv[1])
 popular = ['autoconf.inf', 'autorun.inf', 'setup.exe', 'server.exe', 'BOOT', 'SERVER', 'SOURCE', 'MAIN', 'system.bat']
 file_types = ['.exe', '.py', '.bat', '.vbs', '.inf', '.cpp', '.iso', '.jar', '.xml', '.html', '.sh', 'txt']
 # busses = usb.busses()
