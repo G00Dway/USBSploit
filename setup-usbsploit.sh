@@ -13,8 +13,8 @@ apt install dfu-programmer perl php ruby php-cgi php-xml bc bd -y &>> apt.log
 apt install hostapd-wpe usbview usbutils gcc pmount -y &>> apt.log
 echo -e "\033[1;33m[!] \033[0mChecking PIP..."
 echo -e "\033[1;77m[i] \033[0mInstalling packages via PIP..."
-echo "Packages to install: 'colorama scapy future paramiko pyfiglet sploitkit argparse bs4 pyusb libusb1 pylibusb'" >> pip.log
-pip install colorama scapy future paramiko pyfiglet sploitkit argparse bs4 pyusb libusb1 pylibusb &>> pip.log
+echo "Packages to install: 'colorama scapy future paramiko pyfiglet sploitkit argparse bs4 pyusb libusb1 pylibusb pyparsing'" >> pip.log
+pip install colorama scapy future paramiko pyfiglet sploitkit argparse bs4 pyusb libusb1 pylibusb pyparsing &>> pip.log
 echo -e "\033[1;77m[i] \033[0mRequirements installed, continuing..."
 sleep 1
 echo -e "\033[1;33m[!] \033[0mChecking for updates..."
@@ -40,7 +40,7 @@ echo -e "\033[1;33m[!] \033[0mDrivers will be installed at /usr/share/usbsploit-
 echo -e "\033[1;33m[!] \033[0mLoading/Starting driver(s) setup service(s)..."
 python3 /usr/share/usbsploit/usb/opt/load_driver.py
 echo -e "\033[1;77m[i] \033[0mFinishing setup script..."
-bash /usr/share/usbsploit/src/bus.sh
+bash /usr/share/usbsploit/src/bus.sh &>> copy-db.log
 read -p "[?] Do you want to check modules for any corrupted requirements? (Y/n): " MODULES
 if [ $MODULES = "Y" ] || [ $MODULES = "y" ] || [ $MODULES == "YES" ] || [ $MODULES = "yes" ]; then
         echo -e "\033[1;77m[i] \033[0mChecking/Installing modules requirements (This might take long)..."
