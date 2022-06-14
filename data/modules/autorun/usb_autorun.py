@@ -34,7 +34,7 @@ Module Commands
 '''
 
 try:
-    usbf = input(f'\033[4musbf\033[0m-(MODULE: {Fore.RED}{name}{Fore.RESET}) > ').strip(" ").lower()
+    usbf = input(f'\033[4musbf\033[0m-(MODULE: {Fore.RED}{name}{Fore.RESET}) > ').strip(" ")
 except KeyboardInterrupt:
     exit()
 usbf = usbf.split()
@@ -94,7 +94,7 @@ while True:
     else:
         print(Fore.RED+'[-]'+Fore.RESET+' Unknown command: '+usbf[0])
     try:
-        usbf = input(f'\033[4musbf\033[0m-(MODULE: {Fore.RED}{name}{Fore.RESET}) > ').strip(" ").lower()
+        usbf = input(f'\033[4musbf\033[0m-(MODULE: {Fore.RED}{name}{Fore.RESET}) > ').strip(" ")
     except KeyboardInterrupt:
         exit()
     usbf = usbf.split()
