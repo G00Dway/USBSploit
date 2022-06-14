@@ -244,7 +244,7 @@ USB Commands
     command                 description
     -------                 -----------
     connect <dev>           Connect specified USB device "/dev/" to USBSploit Framework (Optional)
-    sdshow                  Show all attached USB devices "/dev/" paths
+    sdshow                  Show all mounted disk/devices (blocks)
     format <mode> <dev>     Quick format the specified USB device, format modes: "NTFS, FAT32"
     delete <dev>            Delete everything in device
 
@@ -350,6 +350,7 @@ def main():
                         else:
                             print(drvrs)
                     elif usbf[1] == 'modules':
+                        print('')
                         print("Available modules")
                         print('=================')
                         print('')
@@ -370,6 +371,7 @@ def main():
             else:
                 try:
                     found = 0
+                    print('')
                     print("Found Modules")
                     print('=================')
                     print('')
@@ -425,13 +427,14 @@ def main():
             old = os.listdir(update)
             if old == [] or old == () or old == ['\n'] or old == ('\n') or old == False:
                 print(Fore.YELLOW+'[+]'+Fore.RESET+' No old databases found, skipping...')
-            elif "_" in old or "OLD" in old:
-                print(Fore.BLUE+'[i]'+Fore.RESET+' Removing all old databases...')
-                time.sleep(1) 
-                for pr in old:
-                    print(Fore.BLUE+'[i]'+Fore.RESET+' Removing database: '+pr)
-                    time.sleep(0.3)
-                    os.system('rm -rf '+update+'/'+pr)
+            for f in old:
+                if "_" in f or "OLD" in f:
+                    print(Fore.BLUE+'[i]'+Fore.RESET+' Removing all old databases...')
+                    time.sleep(1) 
+                    for pr in old:
+                        print(Fore.BLUE+'[i]'+Fore.RESET+' Removing database: '+pr)
+                        time.sleep(0.3)
+                        os.system('rm -rf '+update+'/'+pr)
             else:
                 print(Fore.YELLOW+'[+]'+Fore.RESET+' No old databases found, skipping...')
         elif usbf[0] == 'update':
@@ -467,7 +470,7 @@ def main():
         #     else:
         #         print(Fore.RED+'[-]'+Fore.RESET+' Please enter a valid command!')
         elif usbf[0] == 'sdshow':
-            print(Fore.BLUE+'[i]'+Fore.RESET+' Listing all USB devices /dev/ paths...')
+            print(Fore.BLUE+'[i]'+Fore.RESET+' Listing devices...')
             time.sleep(0.4)
             fdisk = getoutput('lsblk -l')
             for line in fdisk.split('\n'):
