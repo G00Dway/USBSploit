@@ -22,7 +22,6 @@ def install():
             if driver == "about.txt":
                 with open(drive_path+'/'+driver, "r") as g:
                     about = g.read()
-                print(Fore.BLUE+'[i]'+Fore.RESET+' Setting up driver: "'+about+'"...')
             else:
                 pass
             if ".py" in driver and "setup" in driver or ".pyw" in driver and "setup" in driver:
@@ -38,7 +37,6 @@ def install():
                 if main == "about.txt":
                     with open(drive_path+'/'+driver+'/'+main, "r") as g:
                         about = g.read()
-                    print(Fore.BLUE+'[i]'+Fore.RESET+' Setting up driver: "'+about+'"...')
                 else:
                     pass
                 if ".py" in main and "setup" in main or ".pyw" in main and "setup" in main:

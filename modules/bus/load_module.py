@@ -19,7 +19,10 @@ except:
     pass
 
 try:
-    os.system('python3 /usr/share/usbsploit/data/'+module+' '+send+' '+module)
-    sys.exit()
+    if os.path.exists('/usr/share/usbsploit/'+module):
+        os.system('python3 /usr/share/usbsploit/data/'+module+' '+send+' '+module)
+    else:
+        print(Fore.RED+'[-]'+Fore.RESET+' There was error while loading module: "'+send+'"')
 except:
     pass
+sys.exit()

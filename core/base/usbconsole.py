@@ -79,7 +79,7 @@ try:
                     load_all_modules.append('modules/'+module)
                     m = module.replace(r, "")
                     load_modules.append('modules/'+m)
-                    with open(modules+'/'+m+'.txt', 'r') as d:
+                    with open(modules+'/info.txt', 'r') as d:
                         desc = d.readline()
                     modules_desc_all[m] = desc
                     break
@@ -97,7 +97,7 @@ try:
                         load_all_modules.append('modules/'+module+'/'+module_2)
                         h = module_2.replace(f, "")
                         load_modules.append('modules/'+module+'/'+h)
-                        with open(modules+'/'+module+'/'+h+'.txt', 'r') as d:
+                        with open(modules+'/'+module+'/info.txt', 'r') as d:
                             desc = d.readline()
                         modules_desc_all[h] = desc
                         break
@@ -247,14 +247,6 @@ USB Commands
     format <mode> <dev>     Quick format the specified USB device, format modes: "NTFS, FAT32"
     delete <dev>            Delete everything in device
 
-Driver Commands
-=================
-
-    command                 description
-    -------                 -----------
-    driver <name>           Get information about specified driver
-    load <name>             Load the specified driver
-
 Logs Commands
 =================
 
@@ -362,6 +354,7 @@ def main():
                 print(Fore.RED+'[-]'+Fore.RESET+' Please enter what to search!')
             else:
                 try:
+                    print(Fore.BLUE+'[i]'+Fore.RESET+' Searching "'+usbf[1]+'"...')
                     found = 0
                     print('')
                     print("Found Modules")
@@ -376,7 +369,7 @@ def main():
                     print('')
                     if found == 0:
                         print('')
-                        print(Fore.BLUE+'[i]'+Fore.RESET+' No modules found for: '+usbf[1])
+                        print(Fore.BLUE+'[i]'+Fore.RESET+' No modules found for: "'+usbf[1]+'"')
                 except:
                     pass
         elif usbf[0] == 'use':
@@ -386,14 +379,13 @@ def main():
                 try:
                     if usbf[1] in load_modules:
                         if connected == False:
-                            print(Fore.RED+'[-]'+Fore.RESET+' Please connect specified USB device first with command "connect"!')
-                        else:
-                            module_load = ""
-                            print(Fore.BLUE+'[i]'+Fore.RESET+' Loading module '+usbf[1]+'...')
-                            for rm in load_all_modules:
-                                if usbf[1] in rm:
-                                    module_load = rm
-                            os.system(f'python3 /usr/share/usbsploit/modules/bus/load_module.py {module_load} {usbf[1]}')
+                            print(Fore.MAGENTA+'[!] WARN:'+Fore.RESET+' You have no USB device connected, please connect one with command: "connect"!')
+                        module_load = ""
+                        print(Fore.BLUE+'[i]'+Fore.RESET+' Loading module '+usbf[1]+'...')
+                        for rm in load_all_modules:
+                            if usbf[1] in rm:
+                                module_load = rm
+                        os.system(f'python3 /usr/share/usbsploit/modules/bus/load_module.py {module_load} {usbf[1]}')
                     else:
                         print(Fore.RED+'[-]'+Fore.RESET+' Unknown module: '+usbf[1])
                 except:
@@ -466,7 +458,7 @@ def main():
             time.sleep(0.4)
             fdisk = getoutput('lsblk -l')
             for line in fdisk.split('\n'):
-                print(Fore.BLUE+'[i]'+Fore.RESET+' lsBLK: '+line)
+                print(Fore.BLUE+'[i]'+Fore.RESET+str(line))
         elif usbf[0] == 'format':
             formats = ['ntfs', 'fat32']
             if len(usbf) < 3:
@@ -520,38 +512,38 @@ def main():
                 except:
                     pass
 
-        elif usbf[0] == 'driver':
-            if len(usbf) < 2:
-                print(Fore.RED+'[-]'+Fore.RESET+' Please enter driver name!')
-            else:
-                try:
-                    if usbf[1] in load_drivers:
-                        print(Fore.BLUE+f'DRIVER   {Fore.RESET}: '+usbf[1])
-                        print(Fore.BLUE+f'ABOUT    {Fore.RESET}: '+drivers_desc_all[usbf[1]])
-                        print('')
-                    else:
-                        print(Fore.RED+'[-]'+Fore.RESET+' No such driver: '+usbf[1])
-                except:
-                    pass
-        elif usbf[0] == 'load':
-            if len(usbf) < 2:
-                print(Fore.RED+'[-]'+Fore.RESET+' Please enter driver name to load!')
-            else:
-                try:
-                    rem = ""
-                    load = ""
-                    if usbf[1] in load_drivers:
-                        for main in load_all_drivers:
-                            if usbf[1] in main:
-                                rem = main
-                        for drv in driver_path:
-                            if usbf[1] in drv:
-                                load = drv
-                        print(Fore.BLUE+'[i]'+Fore.RESET+f' Driver "{load}" loaded successfully!')
-                    else:
-                        print(Fore.RED+'[-]'+Fore.RESET+' No such driver: '+usbf[1])
-                except:
-                    pass
+        # elif usbf[0] == 'driver':
+        #     if len(usbf) < 2:
+        #         print(Fore.RED+'[-]'+Fore.RESET+' Please enter driver name!')
+        #     else:
+        #         try:
+        #             if usbf[1] in load_drivers:
+        #                 print(Fore.BLUE+f'DRIVER   {Fore.RESET}: '+usbf[1])
+        #                 print(Fore.BLUE+f'ABOUT    {Fore.RESET}: '+drivers_desc_all[usbf[1]])
+        #                 print('')
+        #             else:
+        #                 print(Fore.RED+'[-]'+Fore.RESET+' No such driver: '+usbf[1])
+        #         except:
+        #             pass
+        # elif usbf[0] == 'load':
+        #     if len(usbf) < 2:
+        #         print(Fore.RED+'[-]'+Fore.RESET+' Please enter driver name to load!')
+        #     else:
+        #         try:
+        #             rem = ""
+        #             load = ""
+        #             if usbf[1] in load_drivers:
+        #                 for main in load_all_drivers:
+        #                     if usbf[1] in main:
+        #                         rem = main
+        #                 for drv in driver_path:
+        #                     if usbf[1] in drv:
+        #                         load = drv
+        #                 print(Fore.BLUE+'[i]'+Fore.RESET+f' Driver "{load}" loaded successfully!')
+        #             else:
+        #                 print(Fore.RED+'[-]'+Fore.RESET+' No such driver: '+usbf[1])
+        #         except:
+        #             pass
         elif usbf[0] == 'history':
             if len(usbf) < 2:
                 with open(root+'/logs/history.log', 'r') as j:
@@ -559,17 +551,19 @@ def main():
                 print(Fore.BLUE+'[i]'+Fore.RESET+' History:')
                 print('')
                 print(his)
-                print('')
             else:
                 try:
                     if usbf[1] == 'delete':
+                        print(Fore.MAGENTA+'[!]'+Fore.RESET+' History deleted.')
                         os.system('rm -rf '+root+'/logs/history.log')
                         os.system('touch '+root+'/logs/history.log')
                     elif usbf[1] == 'off':
+                        print(Fore.MAGENTA+'[!]'+Fore.RESET+' History turned off.')
                         with open(root+'/options/history.options', 'w') as f:
                             f.write('off')
                         history = "off"
                     elif usbf[1] == 'on':
+                        print(Fore.MAGENTA+'[!]'+Fore.RESET+' History turned on.')
                         with open(root+'/options/history.options', 'w') as k:
                             k.write('on')
                         history = "on"

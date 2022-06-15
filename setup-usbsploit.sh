@@ -40,7 +40,7 @@ echo -e "\033[1;33m[!] \033[0mDrivers will be installed at /usr/share/usbsploit-
 echo -e "\033[1;33m[!] \033[0mLoading/Starting driver(s) setup service(s)..."
 python3 /usr/share/usbsploit/usb/opt/load_driver.py
 echo -e "\033[1;77m[i] \033[0mFinishing setup script..."
-bash /usr/share/usbsploit/src/bus.sh &>> copy-db.log
+bash /usr/share/usbsploit/src/bus.sh
 read -p "[?] Do you want to check modules for any corrupted requirements? (Y/n): " MODULES
 if [ $MODULES = "Y" ] || [ $MODULES = "y" ] || [ $MODULES == "YES" ] || [ $MODULES = "yes" ]; then
         echo -e "\033[1;77m[i] \033[0mChecking/Installing modules requirements (This might take long)..."

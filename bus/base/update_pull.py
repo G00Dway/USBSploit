@@ -6,6 +6,8 @@ import sys
 from subprocess import getoutput
 
 try:
+    with open("/usr/share/usbsploit/VERSION.txt", "r") as g:
+        old_ver = g.read()
     pull = getoutput('cd /usr/share/usbsploit && git pull')
     if "Failed" in pull or "failed" in pull:
         print(Fore.RED+'[-]'+Fore.RESET+' Failed to update using GIT...')
@@ -14,7 +16,8 @@ try:
     else:
         with open("/usr/share/usbsploit/VERSION.txt", "r") as v:
             version = v.read()
-        print(Fore.YELLOW+'[+]'+Fore.RESET+' Successfully Updated to version: '+version)
+        time.sleep(3)
+        print(Fore.YELLOW+'[+]'+Fore.RESET+f' Successfully Updated from "{old_ver}" to newer version "{version}"!')
         print(Fore.MAGENTA+'[!]'+Fore.RESET+' Please restart framework to setup updated changes!')
 except:
     pass
