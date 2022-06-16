@@ -281,8 +281,8 @@ Drivers Installed
 def show_banner():
     Banner.generate()
     print("+ -- ---={ "+Fore.YELLOW+"USBSploit Framework Version "+version+" "+Fore.RESET+"")
-    print("- -- ---={ Modules loaded : "+loaded)
-    print("- -- ---={ Plugins loaded : "+plugins_loaded)
+    print("- -- ---={ Modules loaded : "+str(loaded))
+    print("- -- ---={ Plugins loaded : "+str(plugins_loaded))
 
 
 def main():
