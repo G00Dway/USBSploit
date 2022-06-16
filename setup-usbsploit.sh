@@ -4,7 +4,7 @@
 #\033[1;33m[!] \033[0m
 #\033[1;31m[-] \033[0m
 #\033[1;34m[*] \033[0m
-echo -e "\033[1;77m[i] \033[0mLoading/Installing setup script requirements (APT)..."
+echo -e "\033[1;77m[i] \033[0mLoading/Installing setup script requirements (APT) (This might take long)..."
 echo "Packages to install: 'python dfu-programmer perl php ruby php-cgi php-xml bc bd hostapd-wpe usbview usbutils gcc pmount'" >> apt.log
 apt install python-is-python3 -y &>> apt.log
 apt install python3-pip -y &>> apt.log
@@ -12,7 +12,7 @@ apt install python2-is-python3 -y &>> apt.log
 apt install dfu-programmer perl php ruby php-cgi php-xml bc bd -y &>> apt.log
 apt install hostapd-wpe usbview usbutils gcc pmount -y &>> apt.log
 echo -e "\033[1;33m[!] \033[0mChecking PIP..."
-echo -e "\033[1;77m[i] \033[0mInstalling packages via PIP..."
+echo -e "\033[1;77m[i] \033[0mInstalling packages via PIP (This might take long)..."
 echo "Packages to install: 'colorama scapy future paramiko pyfiglet sploitkit argparse bs4 pyusb libusb1 pylibusb pyparsing'" >> pip.log
 pip install colorama scapy future paramiko pyfiglet sploitkit argparse bs4 pyusb libusb1 pylibusb pyparsing &>> pip.log
 echo -e "\033[1;77m[i] \033[0mRequirements installed, continuing..."
