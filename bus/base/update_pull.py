@@ -16,7 +16,7 @@ try:
     else:
         with open("/usr/share/usbsploit/VERSION.txt", "r") as v:
             version = v.read()
-        time.sleep(3)
+        time.sleep(4)
         print(Fore.YELLOW+'[+]'+Fore.RESET+f' Successfully Updated from "{old_ver}" to newer version "{version}"!')
         print(Fore.MAGENTA+'[!]'+Fore.RESET+' Please restart framework to setup updated changes!')
 except:

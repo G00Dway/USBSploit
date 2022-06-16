@@ -44,6 +44,8 @@ load_drivers = []
 num = 0
 module_nums_load = {}
 driver_comment = []
+loaded = 0
+plugins_loaded = 0
 try:
     if os.path.exists("/usr/share/usbsploit/VERSION.txt"):
         with open("/usr/share/usbsploit/VERSION.txt", "r") as v:
@@ -75,6 +77,7 @@ try:
         elif os.path.isfile(modules+'/'+module):
             for r in remove:
                 if r in module:
+                    loaded += 1
                     load_all_modules_name.append(module)
                     load_all_modules.append('modules/'+module)
                     m = module.replace(r, "")
@@ -93,6 +96,7 @@ try:
                     continue
                 for f in remove:
                     if f in module_2:
+                        loaded += 1
                         load_all_modules_name.append(module_2)
                         load_all_modules.append('modules/'+module+'/'+module_2)
                         h = module_2.replace(f, "")
@@ -218,7 +222,7 @@ Main Commands
     info <module>           Get information about specified module
     about                   Show about the framework and its developers
     banner                  Show cool banners
-    exit                    Quit, for force quit use "-f"
+    exit                    Quit framework
 
 Module Commands
 =================
@@ -276,7 +280,9 @@ Drivers Installed
 
 def show_banner():
     Banner.generate()
-    print("+ -- ---={ "+Fore.YELLOW+"USBSploit Framework Version "+version+" "+Fore.RESET+"}")
+    print("+ -- ---={ "+Fore.YELLOW+"USBSploit Framework Version "+version+" "+Fore.RESET+"")
+    print("- -- ---={ Modules loaded : "+loaded)
+    print("- -- ---={ Plugins loaded : "+plugins_loaded)
 
 
 def main():
@@ -379,9 +385,10 @@ def main():
                 try:
                     if usbf[1] in load_modules:
                         if connected == False:
-                            print(Fore.MAGENTA+'[!] WARN:'+Fore.RESET+' You have no USB device connected, please connect one with command: "connect"!')
+                            print(Fore.MAGENTA+'[!] WARN:'+Fore.RESET+' You have no USB device connected, so you will get in trouble, please connect one with command: "connect"!')
                         module_load = ""
-                        print(Fore.BLUE+'[i]'+Fore.RESET+' Loading module '+usbf[1]+'...')
+                        hint = usbf[1].replace("modules/", "")
+                        print(Fore.BLUE+'[i]'+Fore.RESET+' Loading module "'+hint+'"...')
                         for rm in load_all_modules:
                             if usbf[1] in rm:
                                 module_load = rm

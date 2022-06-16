@@ -20,12 +20,10 @@ sleep 1
 echo -e "\033[1;33m[!] \033[0mChecking for updates..."
 bash bus/update_framework.sh
 sleep 1
-echo -e "\033[1;77m[i] \033[0mTrying to setup drivers database at /usr/share..."
 mkdir /usr/share/usbsploit-drivers
 echo -e "\033[1;77m[i] \033[0mBuilding database using GIT at /usr/share..."
 git clone https://github.com/G00Dway/USBSploit /usr/share/usbsploit &>> git-db.log
 mkdir /usr/share/usbsploit-update
-echo -e "\033[1;77m[i] \033[0mCopying drivers to /usr/share/usbsploit-drivers..."
 python3 usb/install/driver_install.py
 echo -e "\033[1;77m[i] \033[0mCopying execution files..."
 chmod +x /usr/share/usbsploit/bin/consoleusb/usbconsole
@@ -36,8 +34,6 @@ echo -e "\033[1;32m[+] \033[0mBuild done, but no output"
 echo -e "\033[1;77m[i] \033[0mLoading drivers..."
 echo -e "\033[1;77m[i] \033[0mLoading setup files..."
 mkdir /usr/share/usbsploit-drivers/DRIVERS
-echo -e "\033[1;33m[!] \033[0mDrivers will be installed at /usr/share/usbsploit-drivers..."
-echo -e "\033[1;33m[!] \033[0mLoading/Starting driver(s) setup service(s)..."
 python3 /usr/share/usbsploit/usb/opt/load_driver.py
 echo -e "\033[1;77m[i] \033[0mFinishing setup script..."
 bash /usr/share/usbsploit/src/bus.sh
