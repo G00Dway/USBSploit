@@ -244,7 +244,7 @@ USB Commands
     -------                 -----------
     connect <dev>           Connect specified USB device "/dev/" to USBSploit Framework (Optional)
     sdshow                  Show all mounted disk/devices (blocks)
-    format <mode> <dev>     Quick format the specified USB device, format modes: "NTFS, FAT32"
+    format <mode> <dev>     Quick format the specified USB device, format modes: "NTFS, FAT"
     delete <dev>            Delete everything in device
 
 Logs Commands
@@ -458,9 +458,9 @@ def main():
             time.sleep(0.4)
             fdisk = getoutput('lsblk -l')
             for line in fdisk.split('\n'):
-                print(Fore.BLUE+'[i]'+Fore.RESET+str(line))
+                print(Fore.BLUE+'[i] '+Fore.RESET+str(line))
         elif usbf[0] == 'format':
-            formats = ['ntfs', 'fat32']
+            formats = ['ntfs', 'fat']
             if len(usbf) < 3:
                 print(Fore.RED+'[-]'+Fore.RESET+' Please enter MODE to use in format and DEV path of the device!')
             else:
