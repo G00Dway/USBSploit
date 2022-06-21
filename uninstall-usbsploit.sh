@@ -9,6 +9,8 @@ read -p "[?] Are you sure to uninstall usbsploit framework? (Y/n): " MODULES
 if [ $MODULES = "Y" ] || [ $MODULES = "y" ] || [ $MODULES == "YES" ] || [ $MODULES = "yes" ]; then
         echo -e "\033[1;33m[!] \033[0mUninstalling framework..."
         rm -rf /usr/share/usbsploit-drivers
+        rm -rf /usr/share/applications/usbsploit.desktop
+        rm -rf /usr/share/kali-menu/applications/usbsploit.desktop
         rm -rf /usr/share/usbsploit-update
         sleep 1
         rm -rf /usr/bin/usbconsole
