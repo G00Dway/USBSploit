@@ -6,6 +6,6 @@ Icon=/usr/share/usbsploit/desktop/icons/icon_2.png
 StartupNotify=false
 Terminal=true
 Type=Application
-Categories=08-explotation-tools;
+Categories=08-exploitation-tools;
 X-Kali-Package=usbsploit-framework
 Comment=USBSploit Framework, advanced USB explotation framework
