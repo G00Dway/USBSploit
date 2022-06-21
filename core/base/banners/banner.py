@@ -251,5 +251,5 @@ class banner:
     def generate(self):
         banner_get = random.choice(banners)
         print(banner_get)
-    def banner_manual():
+    def banner_manual(self):
       pass

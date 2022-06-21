@@ -44,6 +44,9 @@ if [ $MODULES = "Y" ] || [ $MODULES = "y" ] || [ $MODULES == "YES" ] || [ $MODUL
 else
         echo -e "\033[1;77m[i] \033[0mSkipping modules check..."
 fi
+echo -e "\033[1;77m[i] \033[0mCopying launcher files..."
+cp -r /usr/share/usbsploit/desktop/usbsploit.desktop /usr/share/applications
+cp -r /usr/share/usbsploit/desktop/usbsploit.desktop /usr/share/kali-menu/applications
 sleep 1
 echo -e "\033[1;77m[i] \033[0mCleaning up..."
 rm -rf /usr/share/usbsploit/setup-usbsploit.sh

@@ -4,7 +4,7 @@
 #\033[1;33m[!] \033[0m
 #\033[1;31m[-] \033[0m
 #\033[1;34m[*] \033[0m
-echo -e "\033[1;77m[i] \033[0mStarting to uninstall usbsploit framework..."
+echo -e "\033[1;77m[i] \033[0mUninstalling USBSploit framework..."
 read -p "[?] Are you sure to uninstall usbsploit framework? (Y/n): " MODULES
 if [ $MODULES = "Y" ] || [ $MODULES = "y" ] || [ $MODULES == "YES" ] || [ $MODULES = "yes" ]; then
         echo -e "\033[1;33m[!] \033[0mUninstalling framework..."
