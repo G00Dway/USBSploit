@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=usbsploit-framework
+Name=usbsploit framework
 Encoding=UTF-8
 Exec=/usr/share/kali-menu/exec-in-shell "sudo usbcc"
 Icon=/usr/share/usbsploit/desktop/icons/icon_2.png
@@ -7,5 +7,5 @@ StartupNotify=false
 Terminal=true
 Type=Application
 Categories=08-exploitation-tools;
-X-Kali-Package=usbsploit-framework
+X-Kali-Package=usbsploit framework
 Comment=USBSploit Framework, advanced USB explotation framework
