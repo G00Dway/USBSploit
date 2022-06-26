@@ -23,6 +23,9 @@ cd USBSploit (cd to directory where you downloaded it)
 sudo bash uninstall-usbsploit.sh ("sudo ./uninstall-usbsploit.sh" is not recommended)
 ```
 
+# Screenshot(s)
+![2022-06-26(1)](https://user-images.githubusercontent.com/80381071/175804209-6e4f1771-3478-43ec-b029-dd36e56f56db.png)
+
 # Credits / Membership / Group
 - Credits goes to: `Fux`
 - Framework developed by: `G00Dway`
