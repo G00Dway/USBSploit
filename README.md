@@ -5,6 +5,7 @@ USBSploit framework is a USB devices explotation framework with a bunch of modul
 - USBSploit framework is a pentesting framework for Removable/USB devices, This tools has (many) modules that can be useful in Removable/USB Devices exploitation
 
 # Installation / Uninstallation
+* First make sure you have `ROOT` permissions first before installation!
 ### Installation
 ```
 sudo apt update
