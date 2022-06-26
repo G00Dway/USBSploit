@@ -24,6 +24,7 @@ sudo bash uninstall-usbsploit.sh ("sudo ./uninstall-usbsploit.sh" is not recomme
 
 # Credits / Membership / Group
 - Credits goes to: `Fux`
+- Framework developed by: `G00Dway`
 - Our organization: `Blest † Boyz`
 - Members: `G00Dway, Fux, Nemesis, Rotasız, Dilax, Cyrus, Yakuza, Others...`
 
