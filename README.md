@@ -6,7 +6,7 @@ USBSploit framework is a USB devices explotation framework with a bunch of modul
 
 # Installation / Uninstallation
 * First make sure you have `ROOT` permissions first before installation!
-### Installation |`sudo`|
+### Installation (`sudo`)
 ```
 sudo apt update
 sudo apt install git
@@ -16,7 +16,7 @@ sudo chmod +x *
 sudo bash setup-usbsploit.sh ("sudo ./setup-usbsploit.sh" is not recommended)
 ```
 
-### Uninstallation |`sudo`|
+### Uninstallation (`sudo`)
 ```
 sudo apt update
 cd USBSploit (cd to directory where you downloaded it)
