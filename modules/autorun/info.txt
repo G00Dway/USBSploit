@@ -1,0 +1,1 @@
+Creates/Builds a autorun script in usb device and when its inserted the payload automatically loads up
